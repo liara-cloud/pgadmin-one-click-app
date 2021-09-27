@@ -1,1 +1,1 @@
-docker build -t liararepo/pgadmin-one-click-app:4 .
+docker build -t liaracloud/pgadmin4:5.7 .

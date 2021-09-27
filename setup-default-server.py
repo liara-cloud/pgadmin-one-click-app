@@ -5,23 +5,33 @@ import json
 host = os.getenv('DEFAULT_SERVER_HOST')
 port = os.getenv('DEFAULT_SERVER_PORT')
 user = os.getenv('DEFAULT_SERVER_USER')
+password = os.getenv('DEFAULT_SERVER_PASSWORD')
+maintenanceDB = os.getenv('DEFAULT_MAINTENANCE_DB')
 
+passFilePath = os.getenv('PGADMIN_PASSWORD_FILE')
 serversFilePath = os.getenv('PGADMIN_SERVER_JSON_FILE')
 
 servers = {
   "Servers": {
     "1": {
-      "Name": "My Database",
-      "Group": "Servers",
+      "Name": host,
+      "Group": "Liara",
+      "Host": host,
       "Port": port,
       "Username": user,
-      "Host": host,
+      "PassFile": passFilePath,
       "SSLMode": "prefer",
-      "MaintenanceDB": "postgres"
+      "Timeout": 30,
+      "MaintenanceDB": maintenanceDB,
+      "Comment": "Liara's Managed PostgreSQL",
     }
   }
 }
 
 file = open(serversFilePath, 'w+')
 file.write(json.dumps(servers))
+file.close()
+
+file = open(passFilePath, 'w+')
+file.write(host + ':' + port + ':' + maintenanceDB + ':' + user + ':' + password)
 file.close()
