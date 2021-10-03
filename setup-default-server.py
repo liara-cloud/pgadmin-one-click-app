@@ -33,5 +33,5 @@ file.write(json.dumps(servers))
 file.close()
 
 file = open(passFilePath, 'w+')
-file.write(host + ':' + port + ':' + maintenanceDB + ':' + user + ':' + password)
+file.write(host + ':' + port + ':*:' + user + ':' + password)
 file.close()
