@@ -1,1 +1,1 @@
-docker build -t liaracloud/pgadmin4:5.7 .
+docker build -t liaracloud/pgadmin4:7.1 .

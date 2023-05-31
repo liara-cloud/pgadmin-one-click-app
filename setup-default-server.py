@@ -17,7 +17,7 @@ servers = {
       "Name": host,
       "Group": "Liara",
       "Host": host,
-      "Port": port,
+      "Port": int(port),
       "Username": user,
       "PassFile": passFilePath,
       "SSLMode": "prefer",
